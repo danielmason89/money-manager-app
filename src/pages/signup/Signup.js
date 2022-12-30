@@ -1,13 +1,17 @@
 import { useState } from "react";
 import styles from "./signup.module.css";
+import { useSignup } from "../../hooks/useSignup";
 
 export default function Signup() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
 
+  const { signup, isPending, error } = useSignup();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    signup(email, password, username);
   };
 
   return (
@@ -37,7 +41,13 @@ export default function Signup() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button className="btn">Signup</button>
+      {!isPending && <button className="btn">Signup</button>}
+      {isPending && (
+        <button className="btn" disabled>
+          Loading...
+        </button>
+      )}
+      {error && <p>{error}</p>}
     </form>
   );
 }
