@@ -1,21 +1,55 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Route,
+  Navigate,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import SignUp from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
-import Navbar from "./components/navbar/Navbar";
+import RootLayout from "./layout/RootLayout";
+import HelpLayout from "./layout/Help/HelpLayout";
+import Faq from "./pages/help/faq/Faq";
+import Contact from "./pages/help/contact/Contact";
+import NotFound from "./pages/NotFound";
+import PlansLayout from "./layout/PlansLayout";
+import Plans, { plansLoader } from "./pages/plans/Plans";
+import PlansDetails, { planDetailsLoader } from "./pages/plans/PlansDetail";
+import PlanError from "./pages/plans/PlanError";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+      <Route path="login" element={<Login />} />
+      <Route path="signup" element={<SignUp />} />
+      <Route path="help" element={<HelpLayout />}>
+        <Route path="faq" element={<Faq />} />
+        <Route path="contact" element={<Contact />} />
+      </Route>
+      <Route
+        path="plans"
+        element={<PlansLayout />}
+        errorElement={<PlanError />}
+      >
+        <Route index element={<Plans />} loader={plansLoader} />
+        <Route
+          path=":id"
+          element={<PlansDetails />}
+          loader={planDetailsLoader}
+        />
+      </Route>
+      <Route path="/redirect" element={<Navigate to="/" />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+);
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/redirect" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </div>
   );
 }

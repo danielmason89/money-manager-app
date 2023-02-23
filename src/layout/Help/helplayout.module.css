@@ -1,0 +1,31 @@
+header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+header h2 {
+  padding-right: 1rem;
+}
+
+.helplayout nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+.helplayout nav a {
+  padding: 10px;
+  border: 2px solid #add;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+}
+.helplayout nav a:hover {
+  border-color: rgb(59, 139, 139);
+  color: #fff;
+}
+.helplayout nav a.active {
+  background: #225822;
+}

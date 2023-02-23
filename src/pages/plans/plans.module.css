@@ -1,0 +1,20 @@
+.plans > a {
+  display: block;
+  background: #948282;
+  padding: 20px;
+  border-radius: 4px;
+  margin: 20px 0;
+  text-decoration: none;
+  color: #fff;
+  border: 0.5rem solid #5c4343;
+}
+.plans > a:hover p {
+  color: rgba(0, 0, 0, 0.2);
+}
+.plans p {
+  margin: 0;
+}
+.plans > a p:last-child {
+  font-size: 0.8em;
+  color: #bbb;
+}

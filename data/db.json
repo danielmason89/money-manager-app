@@ -1,0 +1,29 @@
+{
+  "plans": [
+    {
+      "id": 1,
+      "title": "Chequing",
+      "minimum": 50000
+    },
+    {
+      "id": 2,
+      "title": "Long-Term",
+      "minimum": 40000
+    },
+    {
+      "id": 3,
+      "title": "Savings",
+      "minimum": 75000
+    },
+    {
+      "id": 6,
+      "title": "Investment",
+      "minimum": 50000
+    },
+    {
+      "id": 7,
+      "title": "Short-Sighted",
+      "minimum": 30000
+    }
+  ]
+}

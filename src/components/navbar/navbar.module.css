@@ -25,6 +25,10 @@
 }
 
 .navbar a {
-  color: #333;
+  color: rgb(100, 71, 71);
   text-decoration: none;
+}
+
+.navbar a.active {
+  background: rgb(28, 134, 134);
 }
